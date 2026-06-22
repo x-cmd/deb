@@ -1,4 +1,4 @@
-# x-cmd APT repository (flat layout)
+# x-cmd APT repository  (suite: stable, component: main)
 # Install with:
 #   sudo install -m 0644 x-cmd.list /etc/apt/sources.list.d/x-cmd.list
 #   sudo apt update && sudo apt install -y x-cmd
@@ -6,4 +6,4 @@
 # The repository is currently unsigned, so [trusted=yes] is required
 # (the apt equivalent of gpgcheck=0). Drop [trusted=yes] once a GPG key
 # is published.
-deb [trusted=yes] https://www.x-cmd.com/deb/ ./
+deb [trusted=yes] https://www.x-cmd.com/deb/ stable main

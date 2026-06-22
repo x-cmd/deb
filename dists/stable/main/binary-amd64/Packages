@@ -1,0 +1,12 @@
+Package: x-cmd
+Version: 0.9.9
+Architecture: all
+Maintainer: Li Junhao <l@x-cmd.com>
+Filename: pool/main/x/x-cmd/x-cmd_0.9.9_all.deb
+Size: 4360540
+MD5sum: ad1fc276deb13675071ab29ac1f8e3d6
+SHA1: d8fedbd604ce48ac24dae3acea9987cc8081cee1
+SHA256: 0e0e24f1d67bf69a3f748f8b1c75e091381292a81ebe87b4f2290859dc40a3a9
+Homepage: https://www.x-cmd.com
+Description: Ultimate Integration of POSIX SHELL AWK. A super weapon built for the super engineer
+
