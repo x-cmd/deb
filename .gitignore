@@ -1,0 +1,11 @@
+# apt working artifacts (only appear if this dir is used as a local apt cache)
+/lock
+/archives/
+/lists/
+
+# temporary release file used during regeneration
+/.Release.tmp
+.Release.tmp
+
+# macOS
+.DS_Store
