@@ -1,0 +1,92 @@
+id: x-deb-0-install
+
+<data>:
+  - name:
+      en: basics
+      cn: 基础概念
+    qa:
+      - id: what-is-this-repo
+        question:
+          en: What is this repo?
+          cn: 这个仓库是什么？
+        answer:
+          en: The official x-cmd APT (Debian) repository, serving the x-cmd package across all architectures. Hosted at https://www.x-cmd.com/deb/.
+          cn: 官方 x-cmd APT（Debian）仓库，为 x-cmd 包提供多架构支持。地址：https://www.x-cmd.com/deb/。
+        confidence: 9
+        reference:
+          - docs/0-install.en.md
+          - docs/0-install.cn.md
+
+      - id: how-do-i-install
+        question:
+          en: How do I install x-cmd via APT?
+          cn: 如何通过 APT 安装 x-cmd？
+        answer:
+          en: One line: `echo "deb [trusted=yes] https://www.x-cmd.com/deb/ stable main" | sudo tee /etc/apt/sources.list.d/x-cmd.list && sudo apt update && sudo apt install -y x-cmd`.
+          cn: 一行：`echo "deb [trusted=yes] https://www.x-cmd.com/deb/ stable main" | sudo tee /etc/apt/sources.list.d/x-cmd.list && sudo apt update && sudo apt install -y x-cmd`。
+        confidence: 9
+        reference:
+          - docs/0-install.en.md
+
+      - id: why-trusted-yes
+        question:
+          en: Why do I need `[trusted=yes]`?
+          cn: 为什么需要 `[trusted=yes]`？
+        answer:
+          en: The repository is currently unsigned. `[trusted=yes]` tells apt to skip signature verification for this specific source. Drop the option once GPG signing is published.
+          cn: 仓库目前未签名。`[trusted=yes]` 让 apt 跳过对这个源的签名校验。等签名上线后去掉这个选项即可。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+  - name:
+      en: verification
+      cn: 验证
+    qa:
+      - id: how-to-verify
+        question:
+          en: How do I verify the install worked?
+          cn: 怎么确认安装成功？
+        answer:
+          en: Run `x --version`. You should see `0.9.9` or newer.
+          cn: 跑 `x --version`，应该看到 `0.9.9` 或更新版本。
+        confidence: 9
+        reference:
+          - docs/0-install.en.md
+
+      - id: manual-install-without-apt
+        question:
+          en: Can I install without adding the APT source?
+          cn: 不加 APT 源能直接装吗？
+        answer:
+          en: Yes. Download the .deb directly, verify its SHA-256, and `apt install ./file.deb`. Useful on CI/containers where adding sources is awkward.
+          cn: 可以。直接下 .deb，校验 SHA-256，然后 `apt install ./file.deb`。在 CI/容器里加 source 不方便时很有用。
+        confidence: 9
+        reference:
+          - docs/0-install.en.md
+
+  - name:
+      en: troubleshooting
+      cn: 故障排查
+    qa:
+      - id: not-authenticated-warning
+        question:
+          en: apt says "packages cannot be authenticated". Is it safe?
+          cn: apt 提示「packages cannot be authenticated」，安全吗？
+        answer:
+          en: Yes, expected. The repo is unsigned; `[trusted=yes]` in the source line suppresses the warning. To add real auth, wait for the InRelease GPG signature (tracked in 2-security).
+          cn: 正常现象。仓库未签名，`[trusted=yes]` 会压住这个警告。要真签名，等 InRelease 上线（在 2-security 跟踪）。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+      - id: which-architecture
+        question:
+          en: Which architecture do I get?
+          cn: 我拿到的是哪个架构的？
+        answer:
+          en: x-cmd is `Architecture: all` — there's only one .deb and it's identical across amd64, arm64, armhf, i386.
+          cn: x-cmd 是 `Architecture: all`，amd64/arm64/armhf/i386 都用同一个 .deb。
+        confidence: 9
+        reference:
+          - docs/0-install.en.md

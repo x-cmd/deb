@@ -1,0 +1,65 @@
+id: x-deb-3-stats
+
+<data>:
+  - name:
+      en: contents
+      cn: 内容
+    qa:
+      - id: whats-published
+        question:
+          en: What does this repo currently publish?
+          cn: 这个仓库现在对外发布什么？
+        answer:
+          en: One suite (`stable`), one component (`main`), five per-architecture indices (`amd64`, `arm64`, `armhf`, `i386`, `all`), one `.deb` (`x-cmd 0.9.9`, Architecture: all), and a `Release` file with checksums.
+          cn: 一个 suite（`stable`）、一个 component（`main`）、五个 per-arch 索引（`amd64`、`arm64`、`armhf`、`i386`、`all`）、一个 `.deb`（`x-cmd 0.9.9`，Architecture: all），加一份带 checksum 的 `Release`。
+        confidence: 9
+        reference:
+          - docs/3-stats.en.md
+
+      - id: arch-all-mirror
+        question:
+          en: Why are the five Packages files byte-identical?
+          cn: 为什么五个 Packages 文件字节完全相同？
+        answer:
+          en: x-cmd is `Architecture: all`. APT fetches only the one matching the host arch; the other four are byte-identical duplicates APT never reads but mirrors can.
+          cn: x-cmd 是 `Architecture: all`。APT 只拉匹配本机架构的那一份；其他四份是字节相同的副本，APT 不读，镜像方愿意拉也行。
+        confidence: 9
+        reference:
+          - docs/3-stats.en.md
+
+      - id: download-stats
+        question:
+          en: Are there download counts for this repo?
+          cn: 这个仓库有下载量统计吗？
+        answer:
+          en: No — it's a static mirror with no analytics. For adoption proxy, check the upstream x-cmd project on GitHub (stars, releases).
+          cn: 没有——纯静态镜像，没分析层。要看代理人气，看 GitHub 上游 x-cmd 项目的 stars、releases。
+        confidence: 9
+        reference:
+          - docs/3-stats.en.md
+
+  - name:
+      en: fetching
+      cn: 拉取
+    qa:
+      - id: fetch-release
+        question:
+          en: How do I fetch the Release file?
+          cn: 怎么抓 Release 文件？
+        answer:
+          en: `curl -fsSL https://www.x-cmd.com/deb/dists/stable/Release`. The SHA256 section lists the expected hash for every `.deb`.
+          cn: `curl -fsSL https://www.x-cmd.com/deb/dists/stable/Release`。SHA256 一节列了每个 `.deb` 的期望 hash。
+        confidence: 9
+        reference:
+          - docs/3-stats.en.md
+
+      - id: fetch-deb-directly
+        question:
+          en: How do I fetch the .deb directly?
+          cn: 怎么直接抓 .deb？
+        answer:
+          en: `curl -fsSLO https://www.x-cmd.com/deb/pool/main/x/x-cmd/x-cmd_0.9.9_all.deb`. Verify the SHA-256 with `sha256sum -c`.
+          cn: `curl -fsSLO https://www.x-cmd.com/deb/pool/main/x/x-cmd/x-cmd_0.9.9_all.deb`，用 `sha256sum -c` 校验。
+        confidence: 9
+        reference:
+          - docs/3-stats.en.md

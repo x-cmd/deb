@@ -1,0 +1,91 @@
+id: x-deb-2-security
+
+<data>:
+  - name:
+      en: signing
+      cn: 签名
+    qa:
+      - id: is-repo-signed
+        question:
+          en: Is this APT repo GPG-signed?
+          cn: 这个 APT 仓库有 GPG 签名吗？
+        answer:
+          en: No. Today the repo is unsigned, which is why the sources.list line requires `[trusted=yes]`. There is a published plan to add InRelease signing once a GPG key is announced.
+          cn: 没有。所以 sources.list 必须带 `[trusted=yes]`。有公开的计划：等 GPG key 发布后加上 InRelease 签名。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+      - id: what-does-trusted-yes-do
+        question:
+          en: What does `[trusted=yes]` actually do?
+          cn: `[trusted=yes]` 到底做了什么？
+        answer:
+          en: It tells apt to skip signature verification for this specific source. The `https://` URL still gives you TLS, so network MITM is still blocked — the operator-trust vector (account takeover, mirror compromise) is what you're now trusting on reputation alone.
+          cn: 让 apt 跳过对这个源的签名校验。`https://` URL 仍给你 TLS，所以网络 MITM 仍挡住——你现在只能靠操作员名声挡住账号被拿、镜像被换这类风险。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+      - id: when-signing-coming
+        question:
+          en: When will the repo be GPG-signed?
+          cn: 仓库什么时候加 GPG 签名？
+        answer:
+          en: When the operator publishes a GPG key (long-term + APT sub-key) at a stable URL and announces it on the x-cmd blog + GitHub release. Tracking is in this page.
+          cn: 等操作员发布 GPG key（长期 + APT sub-key）到稳定 URL，并在 x-cmd 博客 + GitHub release 公告。这一页会跟踪。
+        confidence: 8
+        reference:
+          - docs/2-security.en.md
+
+  - name:
+      en: verification
+      cn: 校验
+    qa:
+      - id: manual-sha256
+        question:
+          en: How do I verify a download without adding the APT source?
+          cn: 不加 APT 源也能校验下载吗？
+        answer:
+          en: Yes. `curl -fsSLO <url>` the .deb, then `echo "<sha256>  filename" | sha256sum -c -`. Cross-check the expected hash against a second channel (GitHub release page, etc.) for full confidence.
+          cn: 可以。`curl -fsSLO <url>` 下 `.deb`，然后 `echo "<sha256>  filename" | sha256sum -c -`。把期望 hash 通过另一个渠道（GitHub release 等）交叉对比一次就完整可信。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+      - id: verify-against-release-file
+        question:
+          en: How do I cross-check against the Release file?
+          cn: 怎么跟 Release 文件交叉对比？
+        answer:
+          en: Fetch `https://www.x-cmd.com/deb/dists/stable/Release` and read its `SHA256:` section — that lists the expected hash for every file in the repo.
+          cn: 抓 `https://www.x-cmd.com/deb/dists/stable/Release`，看里面的 `SHA256:` 一节，里面列了仓库里每个文件的期望 hash。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+  - name:
+      en: risk
+      cn: 风险
+    qa:
+      - id: safe-for-production
+        question:
+          en: Is it safe to use on a production fleet?
+          cn: 生产集群能放心用吗？
+        answer:
+          en: Not blindly. The repo is unsigned, so an operator-account compromise or mirror compromise goes undetected. For production: either wait for signing, or pin the version and verify SHA-256 from a second channel on every deploy.
+          cn: 不能盲信。仓库未签名，操作员账号或镜像被攻陷都查不出来。生产环境：要么等签名上线，要么把版本 pin 死、每次部署都从另一渠道交叉对比 SHA-256。
+        confidence: 9
+        reference:
+          - docs/2-security.en.md
+
+      - id: replay-attack
+        question:
+          en: Could an attacker serve me an old, vulnerable .deb?
+          cn: 攻击者能塞给我一个老的、有漏洞的 .deb 吗？
+        answer:
+          en: With TLS-MITM, yes, today. After signing goes live, APT's date check on `Release` plus the GPG signature blocks replay/downgrade.
+          cn: 今天如果有 TLS-MITM，是能的。签名上线后，APT 对 `Release` 的日期检查 + GPG 签名一起挡住重放/降级。
+        confidence: 8
+        reference:
+          - docs/2-security.en.md

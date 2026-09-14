@@ -1,0 +1,91 @@
+id: x-deb-1-packaging
+
+<data>:
+  - name:
+      en: building
+      cn: 构建
+    qa:
+      - id: minimum-deb
+        question:
+          en: What's the minimum file I need to build a .deb?
+          cn: 构建 .deb 最少需要哪些文件？
+        answer:
+          en: A `DEBIAN/control` file with Package, Version, Architecture, Maintainer, Description. Plus the directory tree you want installed. Then `dpkg-deb --build`.
+          cn: 一个 `DEBIAN/control`（含 Package、Version、Architecture、Maintainer、Description），加上你想安装的目录树。然后 `dpkg-deb --build` 即可。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
+
+      - id: architecture-all-vs-native
+        question:
+          en: When should I use `Architecture: all`?
+          cn: 什么时候用 `Architecture: all`？
+        answer:
+          en: When the package contains only interpreted shell, scripts, or other arch-independent data. x-cmd is `Architecture: all` for this reason. For native code, set the arch explicitly (e.g. `amd64`).
+          cn: 当包里只有解释执行的 shell、脚本或其他跟架构无关的数据时。x-cmd 就是 `Architecture: all`。原生二进制要写明确架构（如 `amd64`）。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
+
+      - id: pool-path-rule
+        question:
+          en: How do I name the path under `pool/`?
+          cn: `pool/` 下的路径怎么定？
+        answer:
+          en: `pool/<component>/<first-letter-of-source-name>/<source-name>/`. For `x-cmd` → `pool/main/x/x-cmd/`. The path is keyed by source-name, not binary.
+          cn: `pool/<component>/<源包名首字母>/<源包名>/`。`x-cmd` 对应 `pool/main/x/x-cmd/`。路径按源包名，不按二进制名。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
+
+  - name:
+      en: indices
+      cn: 索引
+    qa:
+      - id: how-to-regen
+        question:
+          en: How do I regenerate Packages / Release after adding a .deb?
+          cn: 加了一个 .deb 后怎么重建索引？
+        answer:
+          en: Run `dpkg-scanpackages` per arch + `apt-ftparchive release`. See the docker block in 1-packaging.md.
+          cn: 每个架构跑一次 `dpkg-scanpackages`，再跑 `apt-ftparchive release`。见 1-packaging.cn.md 里的 docker 块。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
+
+      - id: why-multiversion
+        question:
+          en: Why `--multiversion`?
+          cn: 为什么用 `--multiversion`？
+        answer:
+          en: Without it, only the latest version of each package is indexed. With it, every .deb in `pool/` stays in the index, so users can pin or roll back.
+          cn: 不加的话索引里只留最新版本。加了之后 `pool/` 里所有历史版本都进索引，方便用户 pin 或回滚。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
+
+      - id: why-release-emitted-outside
+        question:
+          en: Why does `Release` get written to `/tmp` first?
+          cn: 为什么 `Release` 先写到 `/tmp`？
+        answer:
+          en: So it carries no self-referential checksum entry. `apt-ftparchive` walks the tree it's given; if you let it scan `dists/stable/Release` while writing it, the checksum line would refer to a half-written file.
+          cn: 为了不带自指的 checksum 条目。`apt-ftparchive` 会扫你给的树；如果让它在写 `dists/stable/Release` 的同时扫它自己，checksum 那一行就会指向一个写了一半的文件。
+        confidence: 8
+        reference:
+          - docs/1-packaging.en.md
+
+  - name:
+      en: serving
+      cn: 服务
+    qa:
+      - id: where-can-i-host
+        question:
+          en: Where can I host an APT repo?
+          cn: APT 仓库可以放在哪里？
+        answer:
+          en: Any static HTTP server. GitHub Pages, Cloudflare R2, S3 + CloudFront, an nginx box. apt just does `GET` on `Release`, `Packages*`, and `.deb` URLs.
+          cn: 任意静态 HTTP server。GitHub Pages、Cloudflare R2、S3 + CloudFront、自建 nginx 都行。apt 只是 `GET` `Release`、`Packages*`、`.deb` 这些 URL。
+        confidence: 9
+        reference:
+          - docs/1-packaging.en.md
