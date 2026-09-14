@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Index of /deb/ — x-cmd APT Repository</title>
+<meta name="description" content="The official x-cmd APT (Debian) repository. Index of pool/, dists/stable/, and the x-cmd package.">
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --muted: #6a737d;
+    --accent: #0b6e4f;
+    --accent-bg: #f0f7f4;
+    --border: #d0d7de;
+    --code-bg: #f6f8fa;
+    --table-zebra: #fafbfc;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header.masthead {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+  .crumb {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--muted);
+    margin: 0;
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 15px;
+    margin: 24px 0 8px;
+    color: var(--fg);
+  }
+  dl.meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 18px;
+    margin: 12px 0 0;
+    font-size: 14px;
+  }
+  dl.meta dt {
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  dl.meta dd {
+    margin: 0;
+  }
+  code, pre, kbd, .mono {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    line-height: 1.45;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 13px;
+  }
+  table.listing {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 8px 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  table.listing th,
+  table.listing td {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.listing th {
+    background: var(--accent-bg);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  table.listing tr:last-child td { border-bottom: 0; }
+  table.listing tbody tr:nth-child(even) td { background: var(--table-zebra); }
+  table.listing td.num,
+  table.listing th.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  table.listing a { color: var(--accent); text-decoration: none; }
+  table.listing a:hover { text-decoration: underline; }
+  ul.tree {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code-bg);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+  }
+  ul.tree li {
+    padding: 4px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  ul.tree li:last-child { border-bottom: 0; }
+  ul.tree li .size {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent-bg);
+    color: var(--accent);
+    border: 1px solid #c8e2d6;
+    border-radius: 999px;
+    padding: 1px 9px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .note {
+    background: #fff8c5;
+    border: 1px solid #d4a72c33;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+  footer.foot {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  a { color: var(--accent); }
+  @media (max-width: 640px) {
+    dl.meta { grid-template-columns: 1fr; gap: 2px 0; }
+    dl.meta dt { margin-top: 8px; }
+    pre { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="crumb">/deb/</div>
+  <h1>x-cmd APT Repository</h1>
+  <p class="lede">A standard Debian archive layout (<code>pool/</code> + <code>dists/</code>) hosting the <strong>x-cmd</strong> package. Consumable directly by <code>apt</code>.</p>
+</header>
+
+<section>
+  <h2>Repository metadata</h2>
+  <dl class="meta">
+    <dt>Origin</dt>          <dd>x-cmd</dd>
+    <dt>Label</dt>           <dd>x-cmd</dd>
+    <dt>Suite</dt>           <dd>stable</dd>
+    <dt>Codename</dt>        <dd>stable</dd>
+    <dt>Components</dt>      <dd>main</dd>
+    <dt>Architectures</dt>   <dd>amd64, arm64, armhf, i386, all</dd>
+    <dt>Description</dt>     <dd>x-cmd APT repository</dd>
+    <dt>Signed</dt>          <dd>No (use <code>[trusted=yes]</code>)</dd>
+    <dt>Canonical URL</dt>   <dd><a href="https://www.x-cmd.com/deb/">https://www.x-cmd.com/deb/</a></dd>
+    <dt>Source repo</dt>     <dd><a href="https://github.com/x-cmd/deb">github.com/x-cmd/deb</a></dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Install on Debian / Ubuntu</h2>
+  <p>Add the repository and install <code>x-cmd</code>:</p>
+  <pre><code># 1. Add the repository (unsigned for now → [trusted=yes])
+sudo install -m 0644 \
+  &lt;(curl -fsSL https://www.x-cmd.com/deb/x-cmd.list) \
+  /etc/apt/sources.list.d/x-cmd.list
+
+# 2. Install x-cmd
+sudo apt update
+sudo apt install -y x-cmd</code></pre>
+
+  <p>Or as a one-liner:</p>
+  <pre><code>echo "deb [trusted=yes] https://www.x-cmd.com/deb/ stable main" \
+  | sudo tee /etc/apt/sources.list.d/x-cmd.list
+sudo apt update &amp;&amp; sudo apt install -y x-cmd</code></pre>
+
+  <p>Verify:</p>
+  <pre><code>x --version</code></pre>
+
+  <div class="note">
+    <strong>Note:</strong> This repository is currently unsigned, hence <code>[trusted=yes]</code>. Switch to a signed <code>InRelease</code> (drop <code>[trusted=yes]</code>) once a GPG key is published.
+  </div>
+</section>
+
+<section>
+  <h2>Hosted packages</h2>
+  <p>One package, architecture-independent (<code>Architecture: all</code>) — indexed once and served across all architectures.</p>
+
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>Package</th>
+        <th>Version</th>
+        <th>Arch</th>
+        <th class="num">Size</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="pool/main/x/x-cmd/x-cmd_0.9.9_all.deb">x-cmd</a></td>
+        <td>0.9.9</td>
+        <td>all</td>
+        <td class="num">4,360,540 B</td>
+        <td>Ultimate Integration of POSIX SHELL AWK. A super weapon built for the super engineer.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Checksums — x-cmd_0.9.9_all.deb</h3>
+  <dl class="meta">
+    <dt>MD5</dt>     <dd class="mono">ad1fc276deb13675071ab29ac1f8e3d6</dd>
+    <dt>SHA1</dt>    <dd class="mono">d8fedbd604ce48ac24dae3acea9987cc8081cee1</dd>
+    <dt>SHA256</dt>  <dd class="mono">0e0e24f1d67bf69a3f748f8b1c75e091381292a81ebe87b4f2290859dc40a3a9</dd>
+    <dt>Size</dt>    <dd class="mono">4360540 bytes</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Index files</h2>
+
+  <h3><code>dists/stable/</code></h3>
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th class="num">Size</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="dists/stable/Release">Release</a></td>
+        <td class="num">4,735 B</td>
+        <td>Suite metadata + checksums of every index file under <code>main/</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3><code>dists/stable/main/binary-&lt;arch&gt;/</code></h3>
+  <p>Per-architecture <code>Packages</code> indices. Because <code>x-cmd</code> is <code>Architecture: all</code>, every index carries the same contents.</p>
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>Architecture</th>
+        <th>Packages</th>
+        <th>Packages.gz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>amd64</td><td><a href="dists/stable/main/binary-amd64/Packages">Packages</a></td><td><a href="dists/stable/main/binary-amd64/Packages.gz">Packages.gz</a></td></tr>
+      <tr><td>arm64</td><td><a href="dists/stable/main/binary-arm64/Packages">Packages</a></td><td><a href="dists/stable/main/binary-arm64/Packages.gz">Packages.gz</a></td></tr>
+      <tr><td>armhf</td><td><a href="dists/stable/main/binary-armhf/Packages">Packages</a></td><td><a href="dists/stable/main/binary-armhf/Packages.gz">Packages.gz</a></td></tr>
+      <tr><td>i386</td> <td><a href="dists/stable/main/binary-i386/Packages">Packages</a></td> <td><a href="dists/stable/main/binary-i386/Packages.gz">Packages.gz</a></td></tr>
+      <tr><td>all</td>  <td><a href="dists/stable/main/binary-all/Packages">Packages</a></td>  <td><a href="dists/stable/main/binary-all/Packages.gz">Packages.gz</a></td></tr>
+    </tbody>
+  </table>
+
+  <h3><code>pool/main/x/x-cmd/</code></h3>
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th class="num">Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="pool/main/x/x-cmd/x-cmd_0.9.9_all.deb">x-cmd_0.9.9_all.deb</a></td>
+        <td class="num">4,360,540 B</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Sources list snippet</h3>
+  <p>A ready-to-use <code>sources.list.d/</code> entry is also published:</p>
+  <ul class="tree">
+    <li><a href="x-cmd.list">x-cmd.list</a><span class="size">409 B</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Full archive tree</h2>
+  <ul class="tree">
+    <li><a href="dists/">dists/</a><span class="size">suite indices</span></li>
+    <li>&nbsp;&nbsp;<a href="dists/stable/">stable/</a><span class="size">suite = stable</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="dists/stable/Release">Release</a><span class="size">4,735 B</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;main/<span class="size">component = main</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary-amd64/<span class="size">Packages + Packages.gz</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary-arm64/<span class="size">Packages + Packages.gz</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary-armhf/<span class="size">Packages + Packages.gz</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary-i386/<span class="size">Packages + Packages.gz</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binary-all/<span class="size">Packages + Packages.gz</span></li>
+    <li><a href="pool/">pool/</a><span class="size">package payloads</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;main/x/x-cmd/<span class="size">source letter = x</span></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="pool/main/x/x-cmd/x-cmd_0.9.9_all.deb">x-cmd_0.9.9_all.deb</a><span class="size">4,360,540 B</span></li>
+    <li><a href="x-cmd.list">x-cmd.list</a><span class="size">409 B — sources.list entry</span></li>
+    <li><a href="README.md">README.md</a><span class="size">4,275 B</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>About x-cmd</h2>
+  <p>
+    <strong>x-cmd</strong> is a large POSIX shell library organized by modules.
+    It is invoked as an external command (<code>x ...</code>) or loaded as a
+    shell function. See <a href="https://www.x-cmd.com/llms.txt">x-cmd LLM
+    reference</a> and <a href="https://www.x-cmd.com/">www.x-cmd.com</a> for
+    full documentation. Build provenance lives in
+    <a href="https://github.com/x-cmd/release">x-cmd/release</a>; the companion
+    RPM repository is mirrored at
+    <a href="https://github.com/x-cmd/rpm">x-cmd/rpm</a> →
+    <code>https://www.x-cmd.com/rpm/</code>.
+  </p>
+  <p>
+    <span class="badge">stable</span>
+    <span class="badge">main</span>
+    <span class="badge">amd64</span>
+    <span class="badge">arm64</span>
+    <span class="badge">armhf</span>
+    <span class="badge">i386</span>
+    <span class="badge">all</span>
+  </p>
+</section>
+
+<footer class="foot">
+  <span>x-cmd APT repository · served from <a href="https://github.com/x-cmd/deb">github.com/x-cmd/deb</a></span>
+  <span>synced daily to <a href="https://www.x-cmd.com/deb/">x-cmd.com/deb</a></span>
+</footer>
+
+</div>
+</body>
+</html>
