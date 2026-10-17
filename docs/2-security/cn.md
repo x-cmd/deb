@@ -117,8 +117,8 @@ pin 了 commit SHA 的纯 shell 内容来说，一般都是 yes。
 
 ## 下一步
 
-- 想看现在对外发布什么？看 [统计](./3-stats.cn.md)。
-- 想自己审计包元数据？看 [打包](./1-packaging.cn.md) 里
+- 想看现在对外发布什么？看 [统计](../3-stats/cn.md)。
+- 想自己审计包元数据？看 [打包](../1-packaging/cn.md) 里
   的索引布局。
 
 数据源：本仓库的 [`README.cn.md`](../../README.cn.md) 及

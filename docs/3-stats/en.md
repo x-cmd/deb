@@ -129,9 +129,9 @@ landing page.
 ## Next steps
 
 - Want to know how those files get generated? See
-  [Packaging](./1-packaging.md).
+  [Packaging](../1-packaging/en.md).
 - Want to know what the security model promises today? See
-  [Security](./2-security.md).
+  [Security](../2-security/en.md).
 
 Source: [`dists/stable/Release`](../../dists/stable/Release),
 [`dists/stable/main/binary-amd64/Packages`](../../dists/stable/main/binary-amd64/Packages),

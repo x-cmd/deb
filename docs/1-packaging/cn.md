@@ -143,7 +143,7 @@ GitHub Pages、Cloudflare R2、自建 nginx，看你。用户加一行
 deb [trusted=yes] https://example.com/deb/ stable main
 ```
 
-……等你上了 GPG 签名（见 [安全](./2-security.cn.md)），就去掉
+……等你上了 GPG 签名（见 [安全](../2-security/cn.md)），就去掉
 `[trusted=yes]`，加 `Signed-By`。
 
 ## 7. 加 `x-cmd.list` snippet
@@ -173,8 +173,8 @@ deb [trusted=yes] https://example.com/deb/ stable main
 
 ## 下一步
 
-- 想给 `Release` 加 GPG 签名？看 [安全](./2-security.cn.md)。
-- 想看本仓库对外的标准布局？看 [统计](./3-stats.cn.md)。
+- 想给 `Release` 加 GPG 签名？看 [安全](../2-security/cn.md)。
+- 想看本仓库对外的标准布局？看 [统计](../3-stats/cn.md)。
 
 数据源：本仓库的 [`README.cn.md`](../../README.cn.md) 及上游
 Debian handbook 的 APT 仓库章节。

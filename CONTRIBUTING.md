@@ -61,8 +61,8 @@
        dists/stable > /tmp/Release && cp /tmp/Release dists/stable/Release'
    ```
 
-5. **Update `docs/3-stats.{md,cn.md,en.md,llms.md}`** with the
-   new version, size, and checksums. The `docs/3-stats.faq.yml`
+5. **Update `docs/3-stats/`** (cn.md, en.md, llms.md) with the
+   new version, size, and checksums. The `docs/3-stats/faq.yml`
    answer-set rarely changes — review only.
 
 6. **Sanity-check the diff**:
@@ -75,14 +75,13 @@
    - One updated `Packages` per arch.
    - `Release` checksum section reflects the new size /
      hash.
-   - `docs/3-stats.*` reflects the new version.
+   - `docs/3-stats/` reflects the new version.
 
 7. **Commit + push**:
    ```sh
    git add pool/main/x/x-cmd/x-cmd_<version>_all.deb \
           dists/stable \
-          docs/3-stats.* \
-          docs/3-stats.faq.yml
+          docs/3-stats
    git commit -m "release: x-cmd <version>"
    git push
    ```
@@ -109,7 +108,7 @@
    `for a in amd64 arm64 armhf i386 all riscv64`).
 2. Update the `APT::FTPArchive::Release::Architectures=...`
    field in the same `apt-ftparchive release` invocation.
-3. Update `docs/3-stats.md` and `docs/3-stats.en.md` (the
+3. Update `docs/3-stats/en.md` and `docs/3-stats/cn.md` (the
    matrix table).
 4. Update `README.md` and `README.cn.md` ("Adding a new
    architecture" hint in the Notes section).
@@ -165,7 +164,7 @@ sub-key with an expiry.
        /usr/share/keyrings/x-cmd-archive-keyring.gpg
    ```
 
-5. **Update `docs/2-security.{md,cn.md,en.md,llms.md,faq.yml}`**
+5. **Update `docs/2-security/` (all four files)**
    — flip the "What you get today" table to all ✅ and remove
    the `[trusted=yes]` rationale.
 

@@ -137,9 +137,9 @@ content with pinned commit SHAs that is generally a yes.
 ## Next steps
 
 - Want to know what's currently being published? See
-  [Stats](./3-stats.en.md).
+  [Stats](../3-stats/en.md).
 - Want to audit the package metadata yourself? See
-  [Packaging](./1-packaging.en.md) for the index layout.
+  [Packaging](../1-packaging/en.md) for the index layout.
 
 Source: this repo's [`README.md`](../../README.md) and the
 upstream APT signing documentation.

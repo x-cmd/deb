@@ -14,8 +14,8 @@ id: x-deb-0-install
           cn: 官方 x-cmd APT（Debian）仓库，为 x-cmd 包提供多架构支持。地址：https://www.x-cmd.com/deb/。
         confidence: 9
         reference:
-          - docs/0-install.en.md
-          - docs/0-install.cn.md
+          - docs/0-install/en.md
+          - docs/0-install/cn.md
 
       - id: how-do-i-install
         question:
@@ -26,7 +26,7 @@ id: x-deb-0-install
           cn: 一行：`echo "deb [trusted=yes] https://www.x-cmd.com/deb/ stable main" | sudo tee /etc/apt/sources.list.d/x-cmd.list && sudo apt update && sudo apt install -y x-cmd`。
         confidence: 9
         reference:
-          - docs/0-install.en.md
+          - docs/0-install/en.md
 
       - id: why-trusted-yes
         question:
@@ -37,7 +37,7 @@ id: x-deb-0-install
           cn: 仓库目前未签名。`[trusted=yes]` 让 apt 跳过对这个源的签名校验。等签名上线后去掉这个选项即可。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
   - name:
       en: verification
@@ -52,7 +52,7 @@ id: x-deb-0-install
           cn: 跑 `x --version`，应该看到 `0.9.9` 或更新版本。
         confidence: 9
         reference:
-          - docs/0-install.en.md
+          - docs/0-install/en.md
 
       - id: manual-install-without-apt
         question:
@@ -63,7 +63,7 @@ id: x-deb-0-install
           cn: 可以。直接下 .deb，校验 SHA-256，然后 `apt install ./file.deb`。在 CI/容器里加 source 不方便时很有用。
         confidence: 9
         reference:
-          - docs/0-install.en.md
+          - docs/0-install/en.md
 
   - name:
       en: troubleshooting
@@ -78,7 +78,7 @@ id: x-deb-0-install
           cn: 正常现象。仓库未签名，`[trusted=yes]` 会压住这个警告。要真签名，等 InRelease 上线（在 2-security 跟踪）。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
       - id: which-architecture
         question:
@@ -89,4 +89,4 @@ id: x-deb-0-install
           cn: x-cmd 是 `Architecture: all`，amd64/arm64/armhf/i386 都用同一个 .deb。
         confidence: 9
         reference:
-          - docs/0-install.en.md
+          - docs/0-install/en.md

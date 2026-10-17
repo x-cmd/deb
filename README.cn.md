@@ -61,11 +61,11 @@ x --version
 ├── x-cmd.list                               # 开箱即用的 sources.list 片段
 ├── README.md                                # 英文 README
 ├── README.cn.md                             # 本文件
-└── docs/                                    # 双语文档 + FAQ + llms
-    ├── 0-install.{md,cn.md,en.md,llms.md,faq.yml}
-    ├── 1-packaging.{md,cn.md,en.md,llms.md,faq.yml}
-    ├── 2-security.{md,cn.md,en.md,llms.md,faq.yml}
-    └── 3-stats.{md,cn.md,en.md,llms.md,faq.yml}
+└── docs/                                    # 双语文档，每个主题一个目录
+    ├── 0-install/    # en.md, cn.md, llms.md, faq.yml
+    ├── 1-packaging/
+    ├── 2-security/
+    └── 3-stats/
 ```
 
 `apt` 先拉 `dists/stable/Release`，再拉匹配本机架构（外加
@@ -128,12 +128,13 @@ x --version
 
 ## 文档站
 
-用户文档在 `docs/`，双语 + FAQ + llms 四件套，结构对齐
+用户文档在 `docs/`，每个主题一个目录，内含 en.md / cn.md / llms.md / faq.yml
+四件套（目录名携带主题编号），结构对齐
 [x-cmd/cve](https://github.com/x-cmd/cve)：
 
 | 页面 | 内容 |
 | --- | --- |
-| [`docs/0-install.*`](docs/0-install.md) | 怎么装：sources.list、`apt install`、手动 `.deb` 校验 |
-| [`docs/1-packaging.*`](docs/1-packaging.md) | 怎么自己打包 + 托管 APT 仓库 |
-| [`docs/2-security.*`](docs/2-security.md) | `[trusted=yes]` 真相 + 签名计划 |
-| [`docs/3-stats.*`](docs/3-stats.md) | 仓库对外发布什么（版本、大小、checksum） |
+| [`docs/0-install/`](docs/0-install/cn.md) | 怎么装：sources.list、`apt install`、手动 `.deb` 校验 |
+| [`docs/1-packaging/`](docs/1-packaging/cn.md) | 怎么自己打包 + 托管 APT 仓库 |
+| [`docs/2-security/`](docs/2-security/cn.md) | `[trusted=yes]` 真相 + 签名计划 |
+| [`docs/3-stats/`](docs/3-stats/cn.md) | 仓库对外发布什么（版本、大小、checksum） |

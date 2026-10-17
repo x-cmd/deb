@@ -7,7 +7,7 @@ metadata: type=apt-repository, scope=deb-stable-main, refresh=daily-mirror, sign
 # x-cmd/deb — repo organization reference
 
 > A structural map of this repository. Not a how-to-install
-> guide (that's in `README.md` / `README.cn.md` / `docs/0-install.*`).
+> guide (that's in `README.md` / `README.cn.md` / `docs/0-install/`).
 > This file is for an agent or maintainer coming back to the
 > repo and asking "where do I edit X?".
 
@@ -45,12 +45,12 @@ only `dists/` and `pool/`; humans see the rest.
 | Add a new `.deb` version | `pool/main/x/x-cmd/x-cmd_<ver>_all.deb` (drop in), then regenerate indices (see CONTRIBUTING.md) |
 | Update the sources-list snippet | `x-cmd.list` |
 | Refresh the per-arch `Packages` files | run the docker command in `CONTRIBUTING.md` → cuts `dists/stable/main/binary-*/Packages{,.gz}` and `dists/stable/Release` |
-| Change the user-facing install doc | `docs/0-install.{md,cn.md,en.md,llms.md,faq.yml}` |
-| Add a new docs topic | a new `docs/<n>-<topic>.{md,cn.md,en.md,llms.md,faq.yml}` set |
+| Change the user-facing install doc | `docs/0-install/` (en.md, cn.md, llms.md, faq.yml) |
+| Add a new docs topic | a new `docs/<n>-<topic>/` folder with the same 4-tuple |
 | Update English README | `README.md` |
 | Update Chinese README | `README.cn.md` |
 | Update the landing page | `index.html` (currently a static SPA shell) |
-| Change the GPG key, signing, or `[trusted=yes]` policy | `CONTRIBUTING.md` (runbook) + `docs/2-security.*` (user-facing) |
+| Change the GPG key, signing, or `[trusted=yes]` policy | `CONTRIBUTING.md` (runbook) + `docs/2-security/` (user-facing) |
 | Fix a broken release | `CONTRIBUTING.md` → "Incident playbook" |
 
 ## Conventions
@@ -58,13 +58,13 @@ only `dists/` and `pool/`; humans see the rest.
 This repo mirrors the `x-cmd/cve` repo's conventions. The
 short version:
 
-- **Numbered prefix on docs topics** — `0-install`,
-  `1-packaging`, `2-security`, `3-stats`. Lower numbers lead.
-- **Five file variants per topic** —
-  `.md` (default = English), `.cn.md` (Chinese), `.en.md`
-  (explicit English), `.llms.md` (LLM-friendly structured),
-  `.faq.yml` (FAQ structured).
-- **YAML frontmatter** on every `.md` and `.llms.md`:
+- **Numbered slot folders** — `docs/0-install/`,
+  `docs/1-packaging/`, `docs/2-security/`, `docs/3-stats/`.
+  Lower numbers lead; the slot name is carried by the folder,
+  not the files inside.
+- **4-tuple per slot** — `en.md`, `cn.md`, `llms.md`
+  (LLM-friendly structured), `faq.yml` (FAQ structured).
+- **YAML frontmatter** on every article and `llms.md`:
   `x-title`, `x-desc`, `x-sidebar`, `x-keywords`, `x-json-ld`
   (TechArticle schema).
 - **Embedded page body starts with `#`** for top-level docs
@@ -80,11 +80,10 @@ short version:
 
 ```
 docs/
-├── 0-install.{md, cn.md, en.md, llms.md, faq.yml}    # how to install x-cmd
-├── 1-packaging.{md, cn.md, en.md, llms.md, faq.yml}  # how to package + host APT
-├── 2-security.{md, cn.md, en.md, llms.md, faq.yml}   # [trusted=yes] + signing plan
-├── 3-stats.{md, cn.md, en.md, llms.md, faq.yml}      # current repo snapshot
-└── assets/                                           # images, badges (reserved)
+├── 0-install/    # how to install x-cmd        (en.md, cn.md, llms.md, faq.yml)
+├── 1-packaging/  # how to package + host APT
+├── 2-security/   # [trusted=yes] + signing plan
+└── 3-stats/      # current repo snapshot
 ```
 
 Each numbered topic covers one user question:
@@ -125,10 +124,10 @@ https://www.x-cmd.com/deb/  (CDN — what apt + humans hit)
 ## When in doubt
 
 - **The maintainer wants to cut a release** → `CONTRIBUTING.md`.
-- **The user wants to install x-cmd** → `docs/0-install.md`.
-- **Someone asks about signing/security** → `docs/2-security.md`.
-- **Someone asks "what's in this repo"** → `docs/3-stats.md`.
-- **Someone asks "how do I package my own"** → `docs/1-packaging.md`.
+- **The user wants to install x-cmd** → `docs/0-install/en.md`.
+- **Someone asks about signing/security** → `docs/2-security/en.md`.
+- **Someone asks "what's in this repo"** → `docs/3-stats/en.md`.
+- **Someone asks "how do I package my own"** → `docs/1-packaging/en.md`.
 
 ## Related repos
 

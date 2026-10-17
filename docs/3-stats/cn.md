@@ -122,8 +122,8 @@ curl -fsSLO https://www.x-cmd.com/deb/pool/main/x/x-cmd/x-cmd_0.9.9_all.deb
 
 ## 下一步
 
-- 想看这些文件怎么生成？看 [打包](./1-packaging.cn.md)。
-- 想看安全模型今天承诺什么？看 [安全](./2-security.cn.md)。
+- 想看这些文件怎么生成？看 [打包](../1-packaging/cn.md)。
+- 想看安全模型今天承诺什么？看 [安全](../2-security/cn.md)。
 
 数据源：
 [`dists/stable/Release`](../../dists/stable/Release)、

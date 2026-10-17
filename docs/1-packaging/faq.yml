@@ -14,7 +14,7 @@ id: x-deb-1-packaging
           cn: 一个 `DEBIAN/control`（含 Package、Version、Architecture、Maintainer、Description），加上你想安装的目录树。然后 `dpkg-deb --build` 即可。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
       - id: architecture-all-vs-native
         question:
@@ -25,7 +25,7 @@ id: x-deb-1-packaging
           cn: 当包里只有解释执行的 shell、脚本或其他跟架构无关的数据时。x-cmd 就是 `Architecture: all`。原生二进制要写明确架构（如 `amd64`）。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
       - id: pool-path-rule
         question:
@@ -36,7 +36,7 @@ id: x-deb-1-packaging
           cn: `pool/<component>/<源包名首字母>/<源包名>/`。`x-cmd` 对应 `pool/main/x/x-cmd/`。路径按源包名，不按二进制名。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
   - name:
       en: indices
@@ -51,7 +51,7 @@ id: x-deb-1-packaging
           cn: 每个架构跑一次 `dpkg-scanpackages`，再跑 `apt-ftparchive release`。见 1-packaging.cn.md 里的 docker 块。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
       - id: why-multiversion
         question:
@@ -62,7 +62,7 @@ id: x-deb-1-packaging
           cn: 不加的话索引里只留最新版本。加了之后 `pool/` 里所有历史版本都进索引，方便用户 pin 或回滚。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
       - id: why-release-emitted-outside
         question:
@@ -73,7 +73,7 @@ id: x-deb-1-packaging
           cn: 为了不带自指的 checksum 条目。`apt-ftparchive` 会扫你给的树；如果让它在写 `dists/stable/Release` 的同时扫它自己，checksum 那一行就会指向一个写了一半的文件。
         confidence: 8
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md
 
   - name:
       en: serving
@@ -88,4 +88,4 @@ id: x-deb-1-packaging
           cn: 任意静态 HTTP server。GitHub Pages、Cloudflare R2、S3 + CloudFront、自建 nginx 都行。apt 只是 `GET` `Release`、`Packages*`、`.deb` 这些 URL。
         confidence: 9
         reference:
-          - docs/1-packaging.en.md
+          - docs/1-packaging/en.md

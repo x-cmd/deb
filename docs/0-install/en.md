@@ -83,7 +83,7 @@ indexed once and served across every architecture APT knows about.
 The repository is currently **unsigned** — there is no GPG key
 under `etc/apt/trusted.gpg.d/` and the `Release` file carries no
 `Signed-By` directive. This is a known gap (see
-[Security](./2-security.en.md) for the plan to add an `InRelease`
+[Security](../2-security/en.md) for the plan to add an `InRelease`
 signature once the key is published).
 
 `[trusted=yes]` is APT's opt-in escape hatch for unsigned
@@ -108,10 +108,10 @@ on locked-down CI runners or ephemeral containers.
 ## Next steps
 
 - Want to package your own `.deb` for distribution via APT?
-  See [Packaging](./1-packaging.en.md).
+  See [Packaging](../1-packaging/en.md).
 - Want to understand what "unsigned" means in practice and
-  what's coming? See [Security](./2-security.en.md).
+  what's coming? See [Security](../2-security/en.md).
 - Curious about what the repo currently publishes (versions,
-  checksums, architectures)? See [Stats](./3-stats.en.md).
+  checksums, architectures)? See [Stats](../3-stats/en.md).
 
 Source: [`README.md`](../../README.md).

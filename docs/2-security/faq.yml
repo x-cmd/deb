@@ -14,7 +14,7 @@ id: x-deb-2-security
           cn: 没有。所以 sources.list 必须带 `[trusted=yes]`。有公开的计划：等 GPG key 发布后加上 InRelease 签名。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
       - id: what-does-trusted-yes-do
         question:
@@ -25,7 +25,7 @@ id: x-deb-2-security
           cn: 让 apt 跳过对这个源的签名校验。`https://` URL 仍给你 TLS，所以网络 MITM 仍挡住——你现在只能靠操作员名声挡住账号被拿、镜像被换这类风险。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
       - id: when-signing-coming
         question:
@@ -36,7 +36,7 @@ id: x-deb-2-security
           cn: 等操作员发布 GPG key（长期 + APT sub-key）到稳定 URL，并在 x-cmd 博客 + GitHub release 公告。这一页会跟踪。
         confidence: 8
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
   - name:
       en: verification
@@ -51,7 +51,7 @@ id: x-deb-2-security
           cn: 可以。`curl -fsSLO <url>` 下 `.deb`，然后 `echo "<sha256>  filename" | sha256sum -c -`。把期望 hash 通过另一个渠道（GitHub release 等）交叉对比一次就完整可信。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
       - id: verify-against-release-file
         question:
@@ -62,7 +62,7 @@ id: x-deb-2-security
           cn: 抓 `https://www.x-cmd.com/deb/dists/stable/Release`，看里面的 `SHA256:` 一节，里面列了仓库里每个文件的期望 hash。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
   - name:
       en: risk
@@ -77,7 +77,7 @@ id: x-deb-2-security
           cn: 不能盲信。仓库未签名，操作员账号或镜像被攻陷都查不出来。生产环境：要么等签名上线，要么把版本 pin 死、每次部署都从另一渠道交叉对比 SHA-256。
         confidence: 9
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md
 
       - id: replay-attack
         question:
@@ -88,4 +88,4 @@ id: x-deb-2-security
           cn: 今天如果有 TLS-MITM，是能的。签名上线后，APT 对 `Release` 的日期检查 + GPG 签名一起挡住重放/降级。
         confidence: 8
         reference:
-          - docs/2-security.en.md
+          - docs/2-security/en.md

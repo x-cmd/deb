@@ -79,7 +79,7 @@ sudo apt install -y x-cmd
 
 仓库目前**未签名**——`etc/apt/trusted.gpg.d/` 下没有 GPG key，
 `Release` 文件也没有 `Signed-By` 指令。这是一个已知的缺口
-（见 [安全](./2-security.cn.md)，里面写了等 key 发布后加上
+（见 [安全](../2-security/cn.md)，里面写了等 key 发布后加上
 `InRelease` 签名的计划）。
 
 `[trusted=yes]` 是 APT 给未签名仓库开的逃生口。它告诉 `apt`
@@ -101,8 +101,8 @@ sudo apt install ./x-cmd_0.9.9_all.deb
 
 ## 下一步
 
-- 想自己打包 `.deb` 通过 APT 分发？看 [打包](./1-packaging.cn.md)。
-- 想了解"未签名"实际意味着什么、后续计划是什么？看 [安全](./2-security.cn.md)。
-- 想看仓库目前对外发布什么（版本、checksum、架构）？看 [统计](./3-stats.cn.md)。
+- 想自己打包 `.deb` 通过 APT 分发？看 [打包](../1-packaging/cn.md)。
+- 想了解"未签名"实际意味着什么、后续计划是什么？看 [安全](../2-security/cn.md)。
+- 想看仓库目前对外发布什么（版本、checksum、架构）？看 [统计](../3-stats/cn.md)。
 
 数据源：[`README.cn.md`](../../README.cn.md)。
